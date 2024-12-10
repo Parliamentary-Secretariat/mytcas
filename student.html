@@ -80,6 +80,7 @@
         <script src="/static/js/main.a62cc1b6.chunk.js" type="9fd0f8859f267e3a6c1da9b6-text/javascript"></script>
         <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="9fd0f8859f267e3a6c1da9b6-|49" defer></script>
 <script>
+    <script>
     // ตัวอย่างข้อมูล student68.json
     const students = [
         { id: "1234567890", name: "John Doe" },
@@ -92,14 +93,33 @@
     const button = document.querySelector('.btn-main.cursor-pointer.disabled');
     const messageBox = document.querySelector('.t-box');
 
-    // ฟังก์ชันตรวจสอบข้อมูล
+    // ฟังก์ชันตรวจสอบข้อมูลใน input
     input.addEventListener('input', () => {
         const value = input.value.trim();
         const student = students.find(student => student.id === value);
 
+        // เปลี่ยนคลาสปุ่มเมื่อ input มีข้อมูล
+        if (value) {
+            button.classList.remove('disabled');
+        } else {
+            button.classList.add('disabled');
+        }
+
+        // แสดงข้อความใน meta และจัดการกล่องข้อความ
         if (student) {
             // ถ้าข้อมูลตรง
             metaSpan.textContent = "(เลขประจำตัวประชาชน)";
+            messageBox.className = 't-box -info -half';
+            messageBox.innerHTML = `
+                เข้าระบบลงทะเบียนด้วย <b>เลขประจำตัวประชาชน 13 หลัก</b> หากไม่มี ให้ใช้ <b>G Number</b> หรือ<b> Passport Number</b>
+            `;
+        } else if (!value) {
+            // ถ้าลบข้อมูลจนว่าง
+            messageBox.className = 't-box -info -half';
+            messageBox.innerHTML = `
+                เข้าระบบลงทะเบียนด้วย <b>เลขประจำตัวประชาชน 13 หลัก</b> หากไม่มี ให้ใช้ <b>G Number</b> หรือ<b> Passport Number</b>
+            `;
+            metaSpan.textContent = "";
         } else {
             // ถ้าข้อมูลไม่ตรง
             metaSpan.textContent = "";
@@ -119,30 +139,11 @@
                 รูปแบบเลขประจำตัวของท่านไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้ง
             `;
         } else {
-            // กรณีข้อมูลถูกต้อง (ปรับตามต้องการ)
+            // กรณีข้อมูลถูกต้อง
             messageBox.className = 't-box -info -half';
             messageBox.innerHTML = `
                 เข้าระบบลงทะเบียนด้วย <b>เลขประจำตัวประชาชน 13 หลัก</b> หากไม่มี ให้ใช้ <b>G Number</b> หรือ<b> Passport Number</b>
             `;
-        }
-    });
-    
-</script>
-<script>
-    // เลือก input และปุ่ม
-    const input = document.querySelector('input[type="text"]');
-    const button = document.querySelector('.btn-main.cursor-pointer.disabled');
-
-    // ฟังก์ชันตรวจสอบข้อมูลใน input
-    input.addEventListener('input', () => {
-        const value = input.value.trim();
-
-        if (value) {
-            // ถ้ามีข้อมูลใน input
-            button.classList.remove('disabled');
-        } else {
-            // ถ้า input ว่างเปล่า
-            button.classList.add('disabled');
         }
     });
 </script>
