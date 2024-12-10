@@ -126,6 +126,25 @@
             `;
         }
     });
+    
+</script>
+<script>
+    // เลือก input และปุ่ม
+    const input = document.querySelector('input[type="text"]');
+    const button = document.querySelector('.btn-main.cursor-pointer.disabled');
+
+    // ฟังก์ชันตรวจสอบข้อมูลใน input
+    input.addEventListener('input', () => {
+        const value = input.value.trim();
+
+        if (value) {
+            // ถ้ามีข้อมูลใน input
+            button.classList.remove('disabled');
+        } else {
+            // ถ้า input ว่างเปล่า
+            button.classList.add('disabled');
+        }
+    });
 </script>
 
 
