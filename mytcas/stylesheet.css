@@ -3,7 +3,7 @@
 
 
 @font-face {
-    font-family: '_.bold';
+    font-family: 'tt';
     src: url('tt-bold-webfont.eot');
     src: url('tt-bold-webfont.eot?#iefix') format('embedded-opentype'),
          url('tt-bold-webfont.woff2') format('woff2'),
@@ -18,7 +18,7 @@
 
 
 @font-face {
-    font-family: 'karnvayla_boldbold';
+    font-family: 'kvl';
     src: url('kvl-bold-webfont.eot');
     src: url('kvl-bold-webfont.eot?#iefix') format('embedded-opentype'),
          url('kvl-bold-webfont.woff2') format('woff2'),
@@ -33,7 +33,7 @@
 
 
 @font-face {
-    font-family: 'karnvayla_regularregular';
+    font-family: 'kvl';
     src: url('kvl-reg-webfont.eot');
     src: url('kvl-reg-webfont.eot?#iefix') format('embedded-opentype'),
          url('kvl-reg-webfont.woff2') format('woff2'),
@@ -48,7 +48,7 @@
 
 
 @font-face {
-    font-family: '_.book';
+    font-family: 'tt';
     src: url('tt-reg-webfont.eot');
     src: url('tt-reg-webfont.eot?#iefix') format('embedded-opentype'),
          url('tt-reg-webfont.woff2') format('woff2'),
