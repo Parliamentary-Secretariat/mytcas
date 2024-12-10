@@ -22,28 +22,174 @@
     <link rel="stylesheet" href="https://www.mytcas.com/_astro/a-level-61-math1.CuQzRu9h.css">
     <link rel="stylesheet" href="https://www.mytcas.com/_astro/index.Dlh2LXYF.css">
     
+    
     <!-- Inline Styles -->
     <style>
-        .input-search {
-            width: 100%;
-            max-width: 400px;
-            position: relative;
-        }
-        .input-search #search {
-            width: 100%;
-            padding: 8px 30px 8px 12px;
-        }
-        .input-search #search:focus-visible {
-            border-color: #fff;
-            outline: 3px solid var(--teal);
-        }
-        .input-search .i-search {
-            position: absolute;
-            top: 13px;
-            right: 12px;
-            color: var(--blue);
-        }
-        /* ... เพิ่มเติมสำหรับ CSS ... */
+            .input-search {
+                width: 100%;
+                max-width: 400px;
+                position: relative
+            }
+
+            .input-search #search {
+                width: 100%;
+                padding: 8px 30px 8px 12px
+            }
+
+            .input-search #search:focus-visible {
+                border-color: #fff;
+                outline: 3px solid var(--teal)
+            }
+
+            .input-search .i-search {
+                position: absolute;
+                top: 13px;
+                right: 12px;
+                color: var(--blue)
+            }
+
+            .t-result {
+                position: relative;
+                z-index: 10;
+                filter: drop-shadow(var(--s-shadow-2));
+                visibility: hidden;
+                opacity: 0;
+                height: 0;
+                overflow: hidden;
+                transition: transform .4s ease-in-out,opacity .3s linear,visibility 0s linear
+            }
+
+            .t-result.active {
+                visibility: visible;
+                height: auto;
+                opacity: 1;
+                overflow: unset;
+                transform: translateY(-20px);
+                transition-timing-function: cubic-bezier(0,.2,.25,1),linear,linear;
+                margin-bottom: -20px
+            }
+
+            .t-result.active:after {
+                content: "";
+                display: block;
+                position: absolute;
+                left: calc(50% - 5px);
+                top: -8px;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 10px 8px 10px;
+                border-color: transparent transparent var(--teal) transparent;
+                z-index: 2
+            }
+
+            .t-result h2 {
+                margin: 0;
+                padding: 8px var(--s-box);
+                background-color: var(--teal);
+                color: #fff;
+                width: 100%;
+                font-size: 1.125em;
+                border-radius: 5px 5px 0 0;
+                padding: 12px 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between
+            }
+
+            .t-result h2 b {
+                font-size: 1rem;
+                font-weight: 400
+            }
+
+            @media (min-width: 768px) {
+                .t-result {
+                    max-width:750px;
+                    transform: translate(-50%)
+                }
+
+                .t-result.active {
+                    left: 50%;
+                    transform: translate(-50%,-30px)
+                }
+
+                .t-result.-left {
+                    transform: translate(0)
+                }
+
+                .t-result.-left.active {
+                    left: 0;
+                    transform: translateY(-30px)
+                }
+
+                .t-result.-left.active:after {
+                    left: 30px
+                }
+            }
+
+            .t-programs {
+                padding: 0;
+                margin: 0;
+                background-color: #fff;
+                border-radius: 0 0 5px 5px
+            }
+
+            .t-programs li {
+                list-style: none;
+                display: block;
+                padding: 16px;
+                position: relative
+            }
+
+            .t-programs li:nth-child(2n) {
+                background-color: #f3f8fd
+            }
+
+            .t-programs li:last-child {
+                border-radius: 0 0 5px 5px
+            }
+
+            .t-programs img {
+                position: absolute;
+                left: 16px;
+                top: 22px
+            }
+
+            .t-programs a {
+                display: block;
+                color: var(--blue);
+                line-height: 1.4;
+                padding-left: 64px
+            }
+
+            .t-programs a>b,.t-programs a>span {
+                display: block;
+                font-size: .9em;
+                font-weight: 400
+            }
+
+            .t-programs a strong {
+                color: #ff6b00
+            }
+
+            .t-programs h3 {
+                font-size: 1em;
+                margin: 0 0 4px;
+                font-weight: 700
+            }
+
+            .search-hide {
+                transition: .4s ease-in-out;
+                padding-top: 12px
+            }
+
+            .search-hide .i-university {
+                width: 20px;
+            }
+
+            .search-hide.active {
+                opacity: 0
+            }
     </style>
     
     <!-- JavaScript -->
@@ -56,7 +202,7 @@
     <ul> 
       <li> 
         <a href="/" class="home"> 
-          <img src="/img/i/icon.svg" alt="TCAS Logo" width="20" height="24"> 
+          <img src="https://www.mytcas.com/img/i/icon.svg" alt="TCAS Logo" width="20" height="24"> 
           <span>หน้าแรก</span>
         </a> 
       </li> 
@@ -85,7 +231,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48"> <path d="M24,44c11.028,0,20-8.972,20-20S35.028,4,24,4S4,12.972,4,24S12.972,44,24,44z M14.939,19.439 c0.586-0.586,1.535-0.586,2.121,0L24,26.379l6.939-6.939c0.586-0.586,1.535-0.586,2.121,0s0.586,1.535,0,2.121l-8,8 C24.768,29.854,24.384,30,24,30s-0.768-0.146-1.061-0.439l-8-8C14.354,20.975,14.354,20.025,14.939,19.439z" fill="currentColor"></path> </svg>
         <span>เมนู<em class="_plus">เพิ่มเติม</em></span> 
       </li> 
-      li class="sub"> 
+      <li class="sub"> 
       <a href="https://course.mytcas.com/universities"> 
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48"> <path d="M 24 4 C 23.731 4 23.462156 4.0717969 23.222656 4.2167969 L 9.6132812 12.466797 C 7.2492813 13.898797 6 15.984 6 18.5 C 6 19.329 6.672 20 7.5 20 L 40.5 20 C 41.328 20 42 19.329 42 18.5 C 42 15.984 40.750719 13.898797 38.386719 12.466797 L 24.777344 4.2167969 C 24.537844 4.0717969 24.269 4 24 4 z M 24 11 C 25.105 11 26 11.895 26 13 C 26 14.105 25.105 15 24 15 C 22.895 15 22 14.105 22 13 C 22 11.895 22.895 11 24 11 z M 11.476562 21.978516 A 1.50015 1.50015 0 0 0 10 23.5 L 10 36.5 A 1.50015 1.50015 0 0 0 11.5 38 L 36.5 38 A 1.50015 1.50015 0 0 0 38 36.5 L 38 23.5 A 1.50015 1.50015 0 1 0 35 23.5 L 35 35 L 33 35 L 33 23.5 A 1.50015 1.50015 0 1 0 30 23.5 L 30 35 L 28 35 L 28 23.5 A 1.50015 1.50015 0 1 0 25 23.5 L 25 35 L 23 35 L 23 23.5 A 1.50015 1.50015 0 1 0 20 23.5 L 20 35 L 18 35 L 18 23.5 A 1.50015 1.50015 0 1 0 15 23.5 L 15 35 L 13 35 L 13 23.5 A 1.50015 1.50015 0 0 0 11.476562 21.978516 z M 7.5 40 A 1.50015 1.50015 0 1 0 7.5 43 L 40.5 43 A 1.50015 1.50015 0 1 0 40.5 40 L 7.5 40 z" fill="currentColor"></path> </svg> 
         <span><em class="_plus">ข้อมูล</em>สถาบัน</span> 
@@ -122,21 +268,21 @@
       <div class="t-intro"> 
         <div class="hero s-container"> 
           <div class="title"> 
-            <img src="/img/logo68.svg" alt="TCAS Logo" width="160" height="60" class="logo"> 
+            <img src="https://www.mytcas.com/img/logo68.svg" alt="TCAS Logo" width="160" height="60" class="logo"> 
             <h1> 
               <span class="en">Thai University Central Admission System</span> 
               <span class="th">ระบบการคัดเลือกกลางบุคคลเข้าศึกษาในสถาบันอุดมศึกษา</span> 
             </h1> 
-            <!-- <a href='https://student.mytcas.com/' class='btn-main'>
-              <span>สมัครลงทะเบียน - เข้าสู่ระบบ TCAS67</span>
+            <a href='https://student.mytcas.com/' class='btn-main'>
+              <span>สมัครลงทะเบียน - เข้าสู่ระบบ TCAS68</span>
               <span class='arrow _svg'><I_arrow /></span>
-            </a> --> 
-            <p>
+            </a>
+            <!-- <p>
               <strong>เปิดระบบ TCAS68 วันที่ 28 ต.ค. 2567 เวลา 09.00 น.</strong>
-            </p> 
+            </p>  -->
           </div> 
           <div class="banner"> <!-- tcas67 --> 
-            <img src="/img/hero.webp" alt="TCAS68" width="480" height="400"> 
+            <img src="https://www.mytcas.com/img/hero.webp" alt="TCAS68" width="480" height="400"> 
           </div> 
         </div> 
         <div class="search"> 
