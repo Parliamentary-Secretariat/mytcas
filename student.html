@@ -86,9 +86,11 @@
         { id: "0987654321", name: "Jane Smith" }
     ];
 
-    // เลือก input และ meta span
+    // เลือก input, meta span, ปุ่ม และกล่องข้อความ
     const input = document.querySelector('input[type="text"]');
     const metaSpan = document.querySelector('.has-meta .meta');
+    const button = document.querySelector('.btn-main.cursor-pointer.disabled');
+    const messageBox = document.querySelector('.t-box');
 
     // ฟังก์ชันตรวจสอบข้อมูล
     input.addEventListener('input', () => {
@@ -103,7 +105,29 @@
             metaSpan.textContent = "";
         }
     });
+
+    // ฟังก์ชันเมื่อกดปุ่ม
+    button.addEventListener('click', () => {
+        const value = input.value.trim();
+        const student = students.find(student => student.id === value);
+
+        if (!student) {
+            // ถ้าข้อมูลไม่ตรง ให้แสดงข้อความผิดพลาด
+            messageBox.className = 't-box -error -half';
+            messageBox.innerHTML = `
+                <h2>ผิดพลาด</h2>
+                รูปแบบเลขประจำตัวของท่านไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้ง
+            `;
+        } else {
+            // กรณีข้อมูลถูกต้อง (ปรับตามต้องการ)
+            messageBox.className = 't-box -info -half';
+            messageBox.innerHTML = `
+                เข้าระบบลงทะเบียนด้วย <b>เลขประจำตัวประชาชน 13 หลัก</b> หากไม่มี ให้ใช้ <b>G Number</b> หรือ<b> Passport Number</b>
+            `;
+        }
+    });
 </script>
+
 
 
     </body>
