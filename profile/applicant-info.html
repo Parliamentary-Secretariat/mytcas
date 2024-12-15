@@ -185,7 +185,7 @@
                           <div>ไม่มีข้อมูลคะแนน</div>
                       </div>
                       <div class="t-box">
-                          <h2 class="title">ข้อมูลคะแนนภาษาอังกฤษ<a class="cursor-pointer">แก้ไขข้อมูล</a></h2>
+                          <h2 class="title">ข้อมูลคะแนนภาษาอังกฤษ<a class="cursor-pointer" href="https://forms.gle/hGi9atmH7eDFYMiUA">แก้ไขข้อมูล</a></h2>
                           <div>ไม่มีข้อมูลคะแนน หากต้องการเพิ่มคะแนน กรุณากดแก้ไขข้อมูล</div>
                       </div>
                       <div class="t-box">
@@ -219,55 +219,6 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const editLink = document.getElementById('edit-link'); // ลิงก์แก้ไขข้อมูล
-    const sectionEnglish = document.getElementById('section-english'); // div ที่จะแก้ไข
-    const originalContent = `
-        <h2 class="title">ข้อมูลคะแนนภาษาอังกฤษ<a class="cursor-pointer" id="edit-link">แก้ไขข้อมูล</a></h2>
-        <div>ไม่มีข้อมูลคะแนน หากต้องการเพิ่มคะแนน กรุณากดแก้ไขข้อมูล</div>
-    `; // เก็บเนื้อหาต้นฉบับ
-
-    editLink.addEventListener('click', function () {
-        // เปลี่ยนเนื้อหาภายใน div
-        sectionEnglish.innerHTML = `
-            <h2 class="title">แก้ไขข้อมูลคะแนนภาษาอังกฤษ<a class="cursor-pointer" id="cancel-link">ยกเลิก</a></h2>
-            <div class="t-box -error hide"><h2>ผิดพลาด</h2></div>
-            <div class="t-row">
-                <div class="col-1c"><label><b>TOEFL IBT</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/120</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>TOEFL PBT</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/677</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>TOEFL CBT</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/300</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>TOEFL ITP</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/677</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>TOEFL IPT</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/1000</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>IELTS</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/9</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>TOEIC</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/990</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>CU-TEP</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/120</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>TU-GET</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/120</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>KEPT</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/100</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>PSU-TEP</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/1000</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>KU-EPT</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/100</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>CMU-eTEGS</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/100</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>SWU-SET</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/100</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>SAT</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);">/1600</span><input type="text" value=""></label></div>
-                <div class="col-1c"><label><b>CEFR</b><span style="font-size: 0.8em; position: absolute; right: 20px; top: 9px; color: rgb(136, 136, 136);"></span><input type="text" value=""></label></div>
-            </div>
-            <hr>
-            <a class="btn-main cursor-pointer" id="confirm-button">ยืนยันข้อมูลคะแนนภาษาอังกฤษ</a>
-        `;
-
-        // จัดการกับการคลิกที่ปุ่ม "ยกเลิก"
-        const cancelLink = document.getElementById('cancel-link');
-        cancelLink.addEventListener('click', function () {
-            sectionEnglish.innerHTML = originalContent; // คืนค่าเนื้อหาต้นฉบับ
-        });
-
-        // จัดการกับการคลิกที่ปุ่ม "ยืนยันข้อมูลคะแนนภาษาอังกฤษ"
-        const confirmButton = document.getElementById('confirm-button');
-        confirmButton.addEventListener('click', function () {
-            // ที่นี่คุณสามารถเพิ่มโค้ดบันทึกข้อมูลตามต้องการ
-            alert("ข้อมูลคะแนนภาษาอังกฤษถูกบันทึกเรียบร้อยแล้ว!"); // แสดงข้อความยืนยัน
-        });
-    });
-});
 </script>
 
     </body>
