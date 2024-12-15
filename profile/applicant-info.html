@@ -104,7 +104,7 @@
                           <table>
                               <tr>
                                   <td class="align-middle" width="132">
-                                      <img id="userImage" src="" width="120" class="img-rounded">
+                                      <img id="userImage" src="" alt="Student" class="img-rounded">
                                   </td>
                                   <td class="align-middle _heading">
                                       <b>รูปถ่ายติดบัตรประจำตัวผู้เข้าสอบรายวิชา</b>
@@ -134,7 +134,7 @@
                               <tbody>
                                   <tr><th>ชื่อ</th><td><span id="nameTh"></span></td></tr>
                                   <tr><th>ชื่อภาษาอังกฤษ</th><td><span id="nameEn"></span></td></tr>
-                                  <tr><th>เลขประจำตัว</th><td><span id="idx"></span></td></tr>
+                                  <tr><th>เลขประจำตัว</th><td><span id="id"></span></td></tr>
                                   <tr><th>รหัสนักเรียน</th><td><span id="schoolId"></span></td></tr>
                                   <!-- <tr><th>อีเมล</th><td></td></tr> -->
                                   <!-- <i class="i-yes"></i> -->
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = userProfile.name_th || userProfile.name_en; // ใช้ชื่อไทยหรือต่างประเทศ
 
         // แสดงข้อมูลในหน้า applicant-info
-        document.getElementById('idx').textContent = userProfile.id || '';
+        document.getElementById('id').textContent = userProfile.id || '';
         document.getElementById('nameTh').textContent = userProfile.name_th || '';
         document.getElementById('nameEn').textContent = userProfile.name_en || '';
         document.getElementById('nameSc').textContent = userProfile.name_sc || '';
@@ -301,8 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // แสดงรูปภาพผู้ใช้
         const userImage = document.getElementById('userImage');
-        userImage.src = userProfile.url || 'https://via.placeholder.com/200'; // URL รูปภาพ หากไม่มีให้ใช้ placeholder
-        userImage.alt = `profile`;
+        userImage.src = userProfile.url || 'https://via.placeholder.com/200'; // URL รูปภาพ
+        userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'Student'}`;
     } else {
         // หากไม่มีข้อมูลผู้ใช้ ให้เปลี่ยนหน้าไปยังหน้า login
         window.location.href = '/student';
