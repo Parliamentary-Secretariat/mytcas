@@ -219,12 +219,60 @@
 </div>
 
 <script>
+// document.addEventListener('DOMContentLoaded', () => {
+//     // ดึงข้อมูลจาก localStorage
+//     const userProfile = JSON.parse(localStorage.getItem('userProfile'));
+    
+//     if (userProfile) {
+//         // แสดงข้อมูลในหน้า
+//         document.getElementById('id').textContent = userProfile.id || '';
+//         document.getElementById('nameTh').textContent = userProfile.name_th || '';
+//         document.getElementById('nameEn').textContent = userProfile.name_en || '';
+//         document.getElementById('nameSc').textContent = userProfile.name_sc || '';
+//         document.getElementById('province').textContent = userProfile.prov || '';
+//         document.getElementById('schoolYear').textContent = userProfile.sc_year || '';
+//         document.getElementById('gpax5').textContent = userProfile.GPAX_5 || '';
+//         document.getElementById('schoolId').textContent = userProfile.sc_id || '';
+//         document.getElementById('registrationDate').textContent = userProfile.date || '';
+
+//         // คะแนน TGAT
+//         document.getElementById('tgat').textContent = userProfile.tgat || '';
+//         document.getElementById('tgat1').textContent = userProfile.tgat1 || '';
+//         document.getElementById('tgat2').textContent = userProfile.tgat2 || '';
+//         document.getElementById('tgat3').textContent = userProfile.tgat3 || '';
+
+//         // คะแนน A-Level
+//         document.getElementById('aleve61').textContent = userProfile.aleve61 || '';
+//         document.getElementById('aleve62').textContent = userProfile.aleve62 || '';
+//         document.getElementById('aleve63').textContent = userProfile.aleve63 || '';
+//         // เพิ่ม aleve64 - aleve89 ที่เหลือตามต้องการ
+
+//         // คะแนนภาษา
+//         document.getElementById('toefl').textContent = userProfile.TOEFL || '';
+//         document.getElementById('ielts').textContent = userProfile.IELTS || '';
+//         document.getElementById('toiec').textContent = userProfile.TOEIC || '';
+//         document.getElementById('kept').textContent = userProfile.KEPT || '';
+//         document.getElementById('sat').textContent = userProfile.SAT || '';
+//         document.getElementById('cefr').textContent = userProfile.CEFR || '';
+
+//         // แสดงรูปภาพผู้ใช้
+//         const userImage = document.getElementById('userImage');
+//         userImage.src = userProfile.url || 'https://via.placeholder.com/200'; // URL รูปภาพ หากไม่มีให้ใช้ placeholder
+//         userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'นักเรียน'}`;
+//     } else {
+//         // หากไม่มีข้อมูลผู้ใช้ ให้เปลี่ยนหน้าไปยังหน้า login
+//         window.location.href = '/student';
+//     }
+// });
 document.addEventListener('DOMContentLoaded', () => {
     // ดึงข้อมูลจาก localStorage
     const userProfile = JSON.parse(localStorage.getItem('userProfile'));
     
     if (userProfile) {
-        // แสดงข้อมูลในหน้า
+        // ดึงชื่อจากหน้า /profile/
+        const name = userProfile.name_th || userProfile.name_en; // ใช้ชื่อไทยหรือต่างประเทศ
+
+        // แสดงข้อมูลในหน้า applicant-info
         document.getElementById('id').textContent = userProfile.id || '';
         document.getElementById('nameTh').textContent = userProfile.name_th || '';
         document.getElementById('nameEn').textContent = userProfile.name_en || '';
@@ -245,7 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('aleve61').textContent = userProfile.aleve61 || '';
         document.getElementById('aleve62').textContent = userProfile.aleve62 || '';
         document.getElementById('aleve63').textContent = userProfile.aleve63 || '';
-        // เพิ่ม aleve64 - aleve89 ที่เหลือตามต้องการ
 
         // คะแนนภาษา
         document.getElementById('toefl').textContent = userProfile.TOEFL || '';
@@ -258,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // แสดงรูปภาพผู้ใช้
         const userImage = document.getElementById('userImage');
         userImage.src = userProfile.url || 'https://via.placeholder.com/200'; // URL รูปภาพ หากไม่มีให้ใช้ placeholder
-        userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'นักเรียน'}`;
+        userImage.alt = `รูปภาพโปรไฟล์ของ ${name}`;
     } else {
         // หากไม่มีข้อมูลผู้ใช้ ให้เปลี่ยนหน้าไปยังหน้า login
         window.location.href = '/student';
