@@ -101,15 +101,15 @@
                     <tbody>
                       <tr>
                         <td class="align-middle" width="140">
-                          <img alt="Student" src="https://tcas68.s3.ap-southeast-1.amazonaws.com/exam/students/uploads/1509966576715_192d0dd2d03.jpg?AWSAccessKeyId=AKIAUD5IGFZRJAK4ENV3&amp;Expires=1734237408&amp;Signature=OLCms71Q5P2Mkevry%2FiE6xk%2BVa0%3D" width="120" class="img-rounded">
+                          <img alt="Student" id="userImage" width="120" class="img-rounded">
                         </td>
                         <td class="align-middle _heading">
                           <ul class="list-none m-0">
-                            <li>ชื่อ <b></b></li>
-                            <li>โรงเรียน <b></b></li>
-                            <li>จังหวัด <b>เชียงใหม่</b></li>
+                            <li>ชื่อ <b id="name"></b></li>
+                            <li>โรงเรียน <b id="nameSc"></b></li>
+                            <li>จังหวัด <b id="province"></b></li>
                             <li>หลักสูตร <b>หลักสูตรแกนกลาง (สามัญ)</b></li>
-                            <li>ปีการศึกษา <b>2567</b></li>
+                            <li>ปีการศึกษา <b id="schoolYear"></b></li>
                           </ul>
                         </td>
                       </tr>
@@ -331,36 +331,37 @@
     
     if (userProfile) {
         // แสดงข้อมูลในหน้า
-        document.getElementById('nameTh').textContent = userProfile.name_th || 'ไม่ระบุ';
-        document.getElementById('nameEn').textContent = userProfile.name_en || 'ไม่ระบุ';
-        document.getElementById('nameSc').textContent = userProfile.name_sc || 'ไม่ระบุ';
-        document.getElementById('province').textContent = userProfile.prov || 'ไม่ระบุ';
-        document.getElementById('schoolYear').textContent = userProfile.sc_year || 'ไม่ระบุ';
-        document.getElementById('gpax5').textContent = userProfile.GPAX_5 || 'ไม่ระบุ';
-        document.getElementById('schoolId').textContent = userProfile.sc_id || 'ไม่ระบุ';
-        document.getElementById('registrationDate').textContent = userProfile.date || 'ไม่ระบุ';
+        document.getElementById('name').textContent = userProfile.name || '';
+        document.getElementById('nameTh').textContent = userProfile.name_th || '';
+        document.getElementById('nameEn').textContent = userProfile.name_en || '';
+        document.getElementById('nameSc').textContent = userProfile.name_sc || '';
+        document.getElementById('province').textContent = userProfile.prov || '';
+        document.getElementById('schoolYear').textContent = userProfile.sc_year || '';
+        document.getElementById('gpax5').textContent = userProfile.GPAX_5 || '';
+        document.getElementById('schoolId').textContent = userProfile.sc_id || '';
+        document.getElementById('registrationDate').textContent = userProfile.date || '';
 
         // คะแนน TGAT
-        document.getElementById('tgat').textContent = userProfile.tgat || 'ไม่ระบุ';
-        document.getElementById('tgat1').textContent = userProfile.tgat1 || 'ไม่ระบุ';
-        document.getElementById('tgat2').textContent = userProfile.tgat2 || 'ไม่ระบุ';
-        document.getElementById('tgat3').textContent = userProfile.tgat3 || 'ไม่ระบุ';
+        document.getElementById('tgat').textContent = userProfile.tgat || '';
+        document.getElementById('tgat1').textContent = userProfile.tgat1 || '';
+        document.getElementById('tgat2').textContent = userProfile.tgat2 || '';
+        document.getElementById('tgat3').textContent = userProfile.tgat3 || '';
 
         // คะแนน A-Level
-        document.getElementById('aleve61').textContent = userProfile.aleve61 || 'ไม่ระบุ';
-        document.getElementById('aleve62').textContent = userProfile.aleve62 || 'ไม่ระบุ';
-        document.getElementById('aleve63').textContent = userProfile.aleve63 || 'ไม่ระบุ';
+        document.getElementById('aleve61').textContent = userProfile.aleve61 || '';
+        document.getElementById('aleve62').textContent = userProfile.aleve62 || '';
+        document.getElementById('aleve63').textContent = userProfile.aleve63 || '';
         // คุณสามารถเพิ่ม aleve64 - aleve89 ที่เหลือตามต้องการ
 
         // คะแนนภาษา
-        document.getElementById('toefl').textContent = userProfile.TOEFL || 'ไม่ระบุ';
-        document.getElementById('ielts').textContent = userProfile.IELTS || 'ไม่ระบุ';
-        document.getElementById('cefr').textContent = userProfile.CEFR || 'ไม่ระบุ';
+        document.getElementById('toefl').textContent = userProfile.TOEFL || '';
+        document.getElementById('ielts').textContent = userProfile.IELTS || '';
+        document.getElementById('cefr').textContent = userProfile.CEFR || '';
 
         // แสดงรูปภาพผู้ใช้
         const userImage = document.getElementById('userImage');
         userImage.src = userProfile.url || 'https://via.placeholder.com/200'; // URL รูปภาพ หากไม่มีให้ใช้ placeholder
-        userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'ผู้ใช้'}`;
+        userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'Student'}`;
     } else {
         // หากไม่มีข้อมูลผู้ใช้ ให้เปลี่ยนหน้าไปยังหน้า login
         window.location.href = '/login/';
