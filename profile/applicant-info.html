@@ -123,8 +123,8 @@
                                   <tr><th>ชื่อโรงเรียน</th><td><span id="nameSc"></span></td></tr>
                                   <tr><th>จังหวัด</th><td><span id="province"></span></td></tr>
                                   <tr><th>หลักสูตร</th><td>หลักสูตรแกนกลาง (สามัญ)</td></tr>
-                                  <tr><th>ปีการศึกษา</th><td>2567</td></tr>
-                                  <tr><th>GPAX 5</th><td>3.62</td></tr>
+                                  <tr><th>ปีการศึกษา</th><td><span id="schoolYear"></span></td></tr>
+                                  <tr><th>GPAX 5</th><td><span id="gpax5"></span></td></tr>
                               </tbody>
                           </table>
                       </div>
@@ -132,15 +132,15 @@
                           <h2 class="title">ข้อมูลส่วนตัว</h2>
                           <table>
                               <tbody>
-                                  <tr><th>ชื่อ</th><td></td></tr>
-                                  <tr><th>ชื่อภาษาอังกฤษ</th><td></td></tr>
-                                  <tr><th>เลขประจำตัว</th><td></td></tr>
-                                  <tr><th>รหัสนักเรียน</th><td></td></tr>
-                                  <tr><th>อีเมล</th><td></td></tr>
+                                  <tr><th>ชื่อ</th><td><span id="nameTh"></span></td></tr>
+                                  <tr><th>ชื่อภาษาอังกฤษ</th><td><span id="nameEn"></span></td></tr>
+                                  <tr><th>เลขประจำตัว</th><td><span id="id"></span></td></tr>
+                                  <tr><th>รหัสนักเรียน</th><td><span id="schoolId"></span></td></tr>
+                                  <!-- <tr><th>อีเมล</th><td></td></tr> -->
                                   <!-- <i class="i-yes"></i> -->
-                                  <tr><th>เบอร์มือถือ</th><td></td></tr> 
+                                  <!--<tr><th>เบอร์มือถือ</th><td></td></tr>  -->
                                   <!-- <i class="i-yes"></i> -->
-                                  <tr><th>วันเดือนปีเกิด</th><td></td></tr>
+                                  <tr><th>วันเดือนปีเกิด</th><td><span id="registrationDate"></span></td></tr>
                                   <tr><th>การเข้าระบบ</th><td>Password Login</td></tr>
                                   <tr><th>น้ำหนัก</th><td></td></tr>
                                   <tr><th>ส่วนสูง</th><td></td></tr>
@@ -225,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (userProfile) {
         // แสดงข้อมูลในหน้า
+        document.getElementById('id').textContent = userProfile.id || '';
         document.getElementById('nameTh').textContent = userProfile.name_th || '';
         document.getElementById('nameEn').textContent = userProfile.name_en || '';
         document.getElementById('nameSc').textContent = userProfile.name_sc || '';
