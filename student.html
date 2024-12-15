@@ -188,7 +188,12 @@ const input = document.querySelector('input[type="text"]');
 const metaSpan = document.querySelector('.has-meta .meta');
 const button = document.querySelector('.btn-main.cursor-pointer');
 const messageBox = document.querySelector('.t-box');
-const action = document.querySelector('.action');
+const actionAA = document.querySelector('.action.aa');
+const tRowPassword = document.querySelector('.t-row:nth-child(2)'); // ช่องรหัสผ่าน
+const textCenterHeading = document.querySelector('.text-center._heading');
+const actionAB = document.querySelector('.action.ab');
+const passwordInput = document.querySelector('input[type="password"]');
+const loginButton = document.querySelector('.action.ab .btn-main.cursor-pointer');
 
 // ฟังก์ชันตรวจสอบข้อมูลใน input
 input.addEventListener('input', () => {
@@ -205,14 +210,13 @@ input.addEventListener('input', () => {
     // แสดงข้อความใน meta
     if (student) {
         metaSpan.textContent = "(เลขประจำตัวประชาชน)";
-    } else if (!value) {
-        metaSpan.textContent = "";
+        metaSpan.style.color = "#0b9c23"; // เปลี่ยนสีข้อความ
     } else {
         metaSpan.textContent = "";
     }
 });
 
-// ฟังก์ชันเมื่อกดปุ่ม
+// ฟังก์ชันเมื่อกดปุ่มตรวจสอบเลขประจำตัว
 button.addEventListener('click', (event) => {
     event.preventDefault(); // ป้องกันการกระทำเริ่มต้น
     const value = input.value.trim();
@@ -220,28 +224,19 @@ button.addEventListener('click', (event) => {
 
     if (student) {
         // กรณีข้อมูลถูกต้อง
-        metaSpan.textContent = "(เลขประจำตัวประชาชน)";
-        metaSpan.style.color = "#0b9c23"; // เปลี่ยนสีข้อความ
-
-        // เปลี่ยนค่าและลักษณะของ input
         input.value = student.id;
-        input.readOnly = true; // ทำให้ไม่สามารถพิมพ์หรือลบข้อความได้
+        input.readOnly = true; // ทำให้ input ไม่สามารถแก้ไขได้
         input.style.backgroundImage = "url(https://student.mytcas.com/assets/img/i/i-yes.svg)";
-        input.style.fontFamily = "kvl, sans-serif";
-        input.style.border = "2px solid #d5d5d7";
-        input.style.transition = ".3s ease";
         input.style.backgroundSize = "30px 20px";
         input.style.backgroundColor = "#fff";
         input.style.backgroundRepeat = "no-repeat";
         input.style.backgroundPosition = "right center";
         input.style.cursor = "not-allowed";
 
-        // เปลี่ยน .action เป็นข้อความใหม่
-        action.innerHTML = `
+        // แสดงการเข้าสู่ระบบด้วยรหัสผ่าน
+        actionAA.innerHTML = `
             <div class="text-center">
-                <div>
-                    <p><a class="_heading cursor-pointer">เข้าสู่ระบบด้วยรหัสผ่าน</a></p>
-                </div>
+                <p><a class="_heading cursor-pointer">เข้าสู่ระบบด้วยรหัสผ่าน</a></p>
             </div>
         `;
     } else {
@@ -254,48 +249,31 @@ button.addEventListener('click', (event) => {
     }
 });
 
-// เลือกปุ่มใน .action.aa
-const actionAA = document.querySelector('.action.aa');
-
-// เลือกองค์ประกอบอื่น ๆ ที่จะเปลี่ยน style
-const tRowPassword = document.querySelector('.t-row:nth-child(2)'); // ช่องรหัสผ่าน (ที่ display:none)
-const textCenterHeading = document.querySelector('.text-center._heading');
-const actionAB = document.querySelector('.action.ab');
-
-// เมื่อคลิก .action.aa
+// ฟังก์ชันเมื่อคลิก "เข้าสู่ระบบด้วยรหัสผ่าน"
 actionAA.addEventListener('click', () => {
-    // เปลี่ยน style ของช่องรหัสผ่านและองค์ประกอบที่เกี่ยวข้อง
     tRowPassword.style.display = 'flex';
     textCenterHeading.style.display = 'block';
     actionAB.style.display = 'block';
-
-    // ซ่อน .action.aa
     actionAA.style.display = 'none';
 });
 
-// เลือก input, ปุ่ม และกล่องข้อความ
-const passwordInput = document.querySelector('input[type="password"]');
-const loginButton = document.querySelector('.btn-main.cursor-pointer');
-const messageBox = document.querySelector('.t-box');
-
 // ฟังก์ชันตรวจสอบรหัสผ่าน
-loginButton.addEventListener('click', () => {
+loginButton.addEventListener('click', (event) => {
+    event.preventDefault(); // ป้องกันการกระทำเริ่มต้น
     const passwordValue = passwordInput.value.trim();
-
-    // ตรวจสอบรหัสผ่านกับข้อมูลใน const students
     const student = students.find(student => student.password === passwordValue);
 
     if (!student) {
-        // ถ้ารหัสผ่านไม่ถูกต้อง
+        // กรณีรหัสผ่านไม่ถูกต้อง
         messageBox.className = 't-box -error -half';
         messageBox.innerHTML = `
             <h2>ผิดพลาด</h2>
             รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
         `;
     } else {
-        // ถ้ารหัสผ่านถูกต้อง เปลี่ยนหน้าและดึงข้อมูลผู้ใช้
-        window.location.href = `/profile/`;
+        // กรณีรหัสผ่านถูกต้อง
         localStorage.setItem('userProfile', JSON.stringify(student)); // เก็บข้อมูลผู้ใช้ใน localStorage
+        window.location.href = `/profile/`; // เปลี่ยนไปหน้าโปรไฟล์
     }
 });
 
@@ -305,6 +283,7 @@ passwordInput.addEventListener('keyup', (event) => {
         loginButton.click();
     }
 });
+
 
     // // ตัวอย่างข้อมูล student68.json
     // const students = [
