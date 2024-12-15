@@ -104,7 +104,7 @@
                           <table>
                               <tr>
                                   <td class="align-middle" width="132">
-                                      <img id="userImage" src="" alt="Student" class="img-rounded">
+                                      <img id="userImages" src="" alt="Student" class="img-rounded">
                                   </td>
                                   <td class="align-middle _heading">
                                       <b>รูปถ่ายติดบัตรประจำตัวผู้เข้าสอบรายวิชา</b>
@@ -300,9 +300,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('cefr').textContent = userProfile.CEFR || '';
 
         // แสดงรูปภาพผู้ใช้
-        const userImage = document.getElementById('userImage');
-        userImage.src = userProfile.url || 'https://via.placeholder.com/200'; // URL รูปภาพ
-        userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'Student'}`;
+        const userImages = document.getElementById('userImages');
+        userImages.src = userProfile.url || 'https://via.placeholder.com/200'; // URL รูปภาพ
+        userImages.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'Student'}`;
     } else {
         // หากไม่มีข้อมูลผู้ใช้ ให้เปลี่ยนหน้าไปยังหน้า login
         window.location.href = '/student';
