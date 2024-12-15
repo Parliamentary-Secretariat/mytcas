@@ -296,28 +296,30 @@
         <script src="/static/js/main.a62cc1b6.chunk.js" type="27237c5beef4e1579bff29cc-text/javascript"></script>
         <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="27237c5beef4e1579bff29cc-|49" defer></script>
         <script>
-            document.querySelectorAll('.r-1, .r-2, .r-3').forEach(element => {
-                element.addEventListener('click', () => {
-                    element.classList.toggle('active');
-                });
+           document.addEventListener('DOMContentLoaded', () => {
+          // Function to toggle .active class
+          const toggleActive = (element) => {
+            element.classList.toggle('active');
+          };
+        
+          // Select all .header elements within .r-1, .r-2, .r-3
+          const headers = document.querySelectorAll('.r-1 .header, .r-2 .header, .r-3 .header');
+        
+          headers.forEach(header => {
+            header.addEventListener('click', () => {
+              toggleActive(header);
             });
-            
-            const r4 = document.querySelector('.r-4');
-            if (r4) {
-                r4.addEventListener('click', (event) => {
-                    const target = event.target;
-                    if (target.classList.contains('t-collapse')) {
-                        // Handle .t-collapse within .r-4
-                        r4.querySelectorAll('.t-collapse').forEach(collapse => {
-                            collapse.classList.remove('active');
-                        });
-                        target.classList.add('active');
-                    } else {
-                        // Toggle .active on .r-4 itself
-                        r4.classList.toggle('active');
-                    }
-                });
-            }
+          });
+        
+          // Select the .header within .r-4
+          const r4Header = document.querySelector('.r-4 .header');
+        
+          if (r4Header) {
+            r4Header.addEventListener('click', () => {
+              toggleActive(r4Header);
+            });
+          }
+        });
         </script>
     </body>
 </html>
