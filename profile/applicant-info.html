@@ -212,36 +212,92 @@
         <script src="/static/js/main.a62cc1b6.chunk.js" type="27237c5beef4e1579bff29cc-text/javascript"></script>
         <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="27237c5beef4e1579bff29cc-|49" defer></script>
         <script>
-            document.querySelectorAll('.r-1 header, .r-2 header, .r-3 header').forEach(header => {
-            header.addEventListener('click', () => {
-                const parentElement = header.closest('.r-1, .r-2, .r-3'); // ค้นหา parent ที่เป็น .r-1, .r-2 หรือ .r-3
-                if (parentElement) {
-                    parentElement.classList.toggle('active'); // สลับ .active
-                }
-            });
-        });
+            document.addEventListener('DOMContentLoaded', function () {
+            const editLink = document.querySelector('.t-box .cursor-pointer'); // ลิงก์แก้ไขข้อมูล
+            const sectionEducation = document.getElementById('section-education'); // div ที่จะแก้ไข
+            const confirmButton = document.querySelector('.btn-main'); // ปุ่มยืนยันข้อมูล
+            const originalContent = sectionEducation.innerHTML; // เก็บเนื้อหาต้นฉบับ
         
-        const r4 = document.querySelector('.r-4');
-        if (r4) {
-            r4.addEventListener('click', (event) => {
-                const target = event.target;
-                if (target.tagName.toLowerCase() === 'header') { // ตรวจสอบว่า tag ที่คลิกคือ <header>
-                    r4.classList.toggle('active'); // สลับ .active บน .r-4
-                }
-            });
-        }
+            editLink.addEventListener('click', function () {
+                // เพิ่มคลาส -choose
+                sectionEducation.classList.add('-choose');
         
-            // Handle <h3> in .t-collapse
-            document.querySelectorAll('.t-collapse h3').forEach(h3 => {
-                h3.addEventListener('click', () => {
-                    const tCollapse = h3.closest('.t-collapse'); // ค้นหา .t-collapse ที่เป็น parent ของ <h3>
-                    
-                    // สลับคลาส .active บน <h3> และ .t-collapse
-                    h3.classList.toggle('active');
-                    tCollapse.classList.toggle('active'); // เพิ่มหรือลบ .active ใน .t-collapse
+                // เปลี่ยนเนื้อหาภายใน div
+                sectionEducation.innerHTML = `
+                    <h2 class="title">แก้ไขข้อมูลการศึกษา<a class="cursor-pointer">ยกเลิก</a></h2>
+                    <div class="t-box -error hide"><h2>ผิดพลาด</h2></div>
+                    <div>
+                        <div class="t-row">
+                            <div class="col required">
+                                <label>หลักสูตร</label>
+                                <select required="">
+                                    <option></option>
+                                    <option value="1">หลักสูตรแกนกลาง (สามัญ)</option>
+                                    <option value="2">หลักสูตรนานาชาติ</option>
+                                    <option value="3">หลักสูตรอาชีวะ</option>
+                                    <option value="4">หลักสูตรตามอัธยาศัย (กศน.)</option>
+                                    <option value="5">หลักสูตรนานาชาติจบจากต่างประเทศ</option>
+                                    <option value="6">สอบเทียบ GED</option>
+                                </select>
+                            </div>
+                            <div class="col required">
+                                <label>ปีการศึกษา </label>
+                                <select required="">
+                                    <option value="2567">2567</option>
+                                    <option value="2566">2566</option>
+                                    <option value="2565">2565</option>
+                                    <option value="2564">2564</option>
+                                    <option value="2563">2563</option>
+                                    <option value="2562">2562</option>
+                                    <option value="2561">2561</option>
+                                    <option value="2560">2560</option>
+                                </select>
+                            </div>
+                            <div class="col required">
+                                <label>GPAX 5</label>
+                                <input type="text" value="3.62">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="t-row">
+                            <div class="col required">
+                                <label>ประเทศ</label>
+                                <select required="" disabled="">
+                                    <option value="thai">ไทย</option>
+                                    <option value="inter">ต่างประเทศ</option>
+                                </select>
+                            </div>
+                            <div class="col required choose-school">
+                                <label>ชื่อโรงเรียน</label>
+                                <input type="text" value="ดาราวิทยาลัย">
+                            </div>
+                            <div class="col -full required">
+                                <label>ที่อยู่โรงเรียน</label>
+                                <input type="text" disabled="" value="วัดเกต เมืองเชียงใหม่ เชียงใหม่ 50000">
+                            </div>
+                            <div class="col -full">
+                                <b>หมายเหตุ</b><br>
+                                1. หากข้อมูลถูกต้องแล้ว ไม่ต้องส่งเอกสารเพิ่มเติม<br>
+                                2. กรณีไม่พบข้อมูลโรงเรียนในรายการข้างต้น&nbsp;<a class="cursor-pointer" href="http://m.me/CUPTmytcas" target="_blank">ติดต่อทีมงานทางเพจ myTCAS.com</a>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <a class="btn-main cursor-pointer">ยืนยันข้อมูลด้านการศึกษา</a>
+                `;
+        
+                // เพิ่มเหตุการณ์ให้ปุ่ม "ยกเลิก"
+                const cancelLink = sectionEducation.querySelector('.cursor-pointer'); // ลิงก์ "ยกเลิก"
+                cancelLink.addEventListener('click', function () {
+                    // ลบคลาส -choose
+                    sectionEducation.classList.remove('-choose');
+                    // คืนค่าเนื้อหาต้นฉบับ
+                    sectionEducation.innerHTML = originalContent;
                 });
             });
-
+        
+            // คุณสามารถเพิ่มเหตุการณ์สำหรับปุ่ม "ยืนยันข้อมูลด้านการศึกษา" ได้ที่นี่
+        });
 
         </script>
     </body>
