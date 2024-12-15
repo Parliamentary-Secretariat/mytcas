@@ -104,7 +104,7 @@
                           <table>
                               <tr>
                                   <td class="align-middle" width="132">
-                                      <img alt="profile" src="https://tcas68.s3.ap-southeast-1.amazonaws.com/exam/students/uploads/1509966576715_192d0dd2d03.jpg?AWSAccessKeyId=AKIAUD5IGFZRJAK4ENV3&amp;Expires=1734242760&amp;Signature=GPnVxU24bKjZXZZDFoqkPlsKXX4%3D" width="120" class="img-rounded">
+                                      <img alt="profile" src="" width="120" class="img-rounded">
                                   </td>
                                   <td class="align-middle _heading">
                                       <b>รูปถ่ายติดบัตรประจำตัวผู้เข้าสอบรายวิชา</b>
@@ -117,11 +117,11 @@
                           </table>
                       </div>
                       <div class="t-box">
-                          <h2 class="title">ข้อมูลการศึกษา<a class="cursor-pointer">ขอแก้ไขข้อมูล</a></h2>
+                          <h2 class="title">ข้อมูลการศึกษา</h2>
                           <table>
                               <tbody>
-                                  <tr><th>ชื่อโรงเรียน</th><td>ดาราวิทยาลัย</td></tr>
-                                  <tr><th>จังหวัด</th><td>เชียงใหม่</td></tr>
+                                  <tr><th>ชื่อโรงเรียน</th><td></td></tr>
+                                  <tr><th>จังหวัด</th><td></td></tr>
                                   <tr><th>หลักสูตร</th><td>หลักสูตรแกนกลาง (สามัญ)</td></tr>
                                   <tr><th>ปีการศึกษา</th><td>2567</td></tr>
                                   <tr><th>GPAX 5</th><td>3.62</td></tr>
@@ -129,7 +129,7 @@
                           </table>
                       </div>
                       <div class="t-box">
-                          <h2 class="title">ข้อมูลส่วนตัว<a class="cursor-pointer">ขอแก้ไขข้อมูล</a></h2>
+                          <h2 class="title">ข้อมูลส่วนตัว</h2>
                           <table>
                               <tbody>
                                   <tr><th>ชื่อ</th><td></td></tr>
@@ -150,7 +150,7 @@
                           </table>
                       </div>
                       <div class="t-box">
-                          <h2 class="title">ข้อมูลผู้ปกครอง<a class="cursor-pointer">ขอแก้ไขข้อมูล</a></h2>
+                          <h2 class="title">ข้อมูลผู้ปกครอง</h2>
                           <table>
                               <tbody>
                                   <tr><th>สถานะผู้ปกครอง</th><td></td></tr>
@@ -161,7 +161,7 @@
                           </table>
                       </div>
                       <div class="t-box">
-                          <h2 class="title">ข้อมูลที่อยู่ที่ติดต่อได้<a class="cursor-pointer">ขอแก้ไขข้อมูล</a></h2>
+                          <h2 class="title">ข้อมูลที่อยู่ที่ติดต่อได้</h2>
                           <table>
                               <tbody>
                                   <tr><th>ที่อยู่</th><td></td></tr>
@@ -212,112 +212,7 @@
         <script src="/static/js/main.a62cc1b6.chunk.js" type="27237c5beef4e1579bff29cc-text/javascript"></script>
         <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="27237c5beef4e1579bff29cc-|49" defer></script>
         <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const editLink = document.querySelector('.t-box .cursor-pointer'); // ลิงก์แก้ไขข้อมูล
-    const sectionEducation = document.getElementById('section-education'); // div ที่จะแก้ไข
-    const confirmButton = document.querySelector('.btn-main'); // ปุ่มยืนยันข้อมูล
-    const originalContent = sectionEducation.innerHTML; // เก็บเนื้อหาต้นฉบับ
 
-    editLink.addEventListener('click', function () {
-        // เพิ่มคลาส -choose
-        sectionEducation.classList.add('-choose');
-
-        // เปลี่ยนเนื้อหาภายใน div
-        sectionEducation.innerHTML = `
-            <h2 class="title">แก้ไขข้อมูลการศึกษา<a class="cursor-pointer">ยกเลิก</a></h2>
-            <div class="t-box -error hide"><h2>ผิดพลาด</h2></div>
-            <div>
-                <div class="t-row">
-                    <div class="col required">
-                        <label>หลักสูตร</label>
-                        <select required="">
-                            <option></option>
-                            <option value="1">หลักสูตรแกนกลาง (สามัญ)</option>
-                            <option value="2">หลักสูตรนานาชาติ</option>
-                            <option value="3">หลักสูตรอาชีวะ</option>
-                            <option value="4">หลักสูตรตามอัธยาศัย (กศน.)</option>
-                            <option value="5">หลักสูตรนานาชาติจบจากต่างประเทศ</option>
-                            <option value="6">สอบเทียบ GED</option>
-                        </select>
-                    </div>
-                    <div class="col required">
-                        <label>ปีการศึกษา </label>
-                        <select required="">
-                            <option value="2567">2567</option>
-                            <option value="2566">2566</option>
-                            <option value="2565">2565</option>
-                            <option value="2564">2564</option>
-                            <option value="2563">2563</option>
-                            <option value="2562">2562</option>
-                            <option value="2561">2561</option>
-                            <option value="2560">2560</option>
-                            <option value="2559">2559</option>
-                            <option value="2558">2558</option>
-                            <option value="2557">2557</option>
-                            <option value="2556">2556</option>
-                            <option value="2555">2555</option>
-                            <option value="2554">2554</option>
-                            <option value="2553">2553</option>
-                            <option value="2552">2552</option>
-                            <option value="2551">2551</option>
-                            <option value="2550">2550</option>
-                            <option value="2549">2549</option>
-                            <option value="2548">2548</option>
-                            <option value="2547">2547</option>
-                            <option value="2546">2546</option>
-                            <option value="2545">2545</option>
-                            <option value="2544">2544</option>
-                            <option value="2543">2543</option>
-                            <option value="2542">2542</option>
-                            <option value="2541">2541</option>
-                            <option value="2540">2540</option>
-                        </select>
-                    </div>
-                    <div class="col required">
-                        <label>GPAX 5</label>
-                        <input type="text" value="3.62">
-                    </div>
-                </div>
-                <hr>
-                <div class="t-row">
-                    <div class="col required">
-                        <label>ประเทศ</label>
-                        <select required="" disabled="">
-                            <option value="thai">ไทย</option>
-                            <option value="inter">ต่างประเทศ</option>
-                        </select>
-                    </div>
-                    <div class="col required choose-school">
-                        <label>ชื่อโรงเรียน</label>
-                        <input type="text" value="ดาราวิทยาลัย">
-                    </div>
-                    <div class="col -full required">
-                        <label>ที่อยู่โรงเรียน</label>
-                        <input type="text" disabled="" value="วัดเกต เมืองเชียงใหม่ เชียงใหม่ 50000">
-                    </div>
-                    <div class="col -full">
-                        <b>หมายเหตุ</b><br>
-                        1. หากข้อมูลถูกต้องแล้ว ไม่ต้องส่งเอกสารเพิ่มเติม<br>
-                        2. กรณีไม่พบข้อมูลโรงเรียนในรายการข้างต้น&nbsp;<a class="cursor-pointer" href="http://m.me/CUPTmytcas" target="_blank">ติดต่อทีมงานทางเพจ myTCAS.com</a>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <a class="btn-main cursor-pointer">ยืนยันข้อมูลด้านการศึกษา</a>
-        `;
-
-        // เพิ่มเหตุการณ์ให้ปุ่ม "ยกเลิก"
-        const cancelLink = sectionEducation.querySelector('.cursor-pointer'); // ลิงก์ "ยกเลิก"
-        cancelLink.addEventListener('click', function () {
-            // ลบคลาส -choose
-            sectionEducation.classList.remove('-choose');
-            // คืนค่าเนื้อหาต้นฉบับ
-            sectionEducation.innerHTML = originalContent;
-        });
-    });
-
-    // คุณสามารถเพิ่มเหตุการณ์สำหรับปุ่ม "ยืนยันข้อมูลด้านการศึกษา" ได้ที่นี่
-});
 
         </script>
     </body>
