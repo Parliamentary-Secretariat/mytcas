@@ -273,6 +273,38 @@ actionAA.addEventListener('click', () => {
     actionAA.style.display = 'none';
 });
 
+// เลือก input, ปุ่ม และกล่องข้อความ
+const passwordInput = document.querySelector('input[type="password"]');
+const loginButton = document.querySelector('.btn-main.cursor-pointer');
+const messageBox = document.querySelector('.t-box');
+
+// ฟังก์ชันตรวจสอบรหัสผ่าน
+loginButton.addEventListener('click', () => {
+    const passwordValue = passwordInput.value.trim();
+
+    // ตรวจสอบรหัสผ่านกับข้อมูลใน const students
+    const student = students.find(student => student.password === passwordValue);
+
+    if (!student) {
+        // ถ้ารหัสผ่านไม่ถูกต้อง
+        messageBox.className = 't-box -error -half';
+        messageBox.innerHTML = `
+            <h2>ผิดพลาด</h2>
+            รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
+        `;
+    } else {
+        // ถ้ารหัสผ่านถูกต้อง เปลี่ยนหน้าและดึงข้อมูลผู้ใช้
+        window.location.href = `/profile/`;
+        localStorage.setItem('userProfile', JSON.stringify(student)); // เก็บข้อมูลผู้ใช้ใน localStorage
+    }
+});
+
+// ฟังก์ชันกด Enter เพื่อเข้าสู่ระบบ
+passwordInput.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        loginButton.click();
+    }
+});
 
     // // ตัวอย่างข้อมูล student68.json
     // const students = [
