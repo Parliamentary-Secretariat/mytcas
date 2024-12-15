@@ -296,19 +296,25 @@
         <script src="/static/js/main.a62cc1b6.chunk.js" type="27237c5beef4e1579bff29cc-text/javascript"></script>
         <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="27237c5beef4e1579bff29cc-|49" defer></script>
         <script>
-        $(document).ready(function () {
-          $('.r-1 .header, .r-2 .header, .r-3 .header, .r-4 .header').on('click', function () {
-            const parentElement = $(this).closest('.r-1, .r-2, .r-3, .r-4'); // ค้นหา parent ที่เป็น r-1, r-2, r-3 หรือ r-4
-            
-            // ตรวจสอบว่ามี .active อยู่ใน parent หรือไม่
-            if (parentElement.hasClass('active')) {
-              parentElement.removeClass('active'); // ถ้ามี ให้ลบ
-            } else {
-              parentElement.addClass('active'); // ถ้าไม่มี ให้เพิ่ม
-            }
-          });
+            document.querySelectorAll('.r-1 .header, .r-2 .header, .r-3 .header').forEach(header => {
+            header.addEventListener('click', () => {
+                const parentElement = header.closest('.r-1, .r-2, .r-3'); // ค้นหา parent ที่เป็น .r-1, .r-2 หรือ .r-3
+                if (parentElement) {
+                    parentElement.classList.toggle('active'); // สลับ .active
+                }
+            });
         });
-
+        
+        const r4 = document.querySelector('.r-4');
+        if (r4) {
+            r4.addEventListener('click', (event) => {
+                const target = event.target;
+                if (target.classList.contains('header')) {
+                    // กรณีคลิกที่ .header ใน .r-4
+                    r4.classList.toggle('active'); // สลับ .active บน .r-4
+                }
+            });
+        }
 
         </script>
     </body>
