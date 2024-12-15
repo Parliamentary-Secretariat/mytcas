@@ -266,11 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const userProfile = JSON.parse(localStorage.getItem('userProfile'));
     
     if (userProfile) {
+        
+        const name = userProfile.name_th || userProfile.name_en; // ใช้ชื่อไทยหรือต่างประเทศ
+        
         const userImage = document.getElementById('userImage');
         userImage.src = userProfile.url || 'https://via.placeholder.com/200'; 
         userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'Student'}`;
-        
-        const name = userProfile.name_th || userProfile.name_en; // ใช้ชื่อไทยหรือต่างประเทศ-
 
         // แสดงข้อมูลในหน้า applicant-info
         document.getElementById('id').textContent = userProfile.id || '';
