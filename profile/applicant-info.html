@@ -266,12 +266,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const userProfile = JSON.parse(localStorage.getItem('userProfile'));
     
     if (userProfile) {
-        const userImage = document.getElementById('userImage');
-        userImage.src = userProfile.url || 'https://via.placeholder.com/200'; // หากไม่มี URL รูปให้ใช้ Placeholder
-        userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'Student'}`;
-        
+        const name = userProfile.name_th || userProfile.name_en; // ใช้ชื่อไทยหรือต่างประเทศ
 
         // แสดงข้อมูลในหน้า applicant-info
+        document.getElementById('userImage ').textContent = userProfile.userImage  || '';
         document.getElementById('id').textContent = userProfile.id || '';
         document.getElementById('nameTh').textContent = userProfile.name_th || '';
         document.getElementById('nameEn').textContent = userProfile.name_en || '';
@@ -301,9 +299,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('sat').textContent = userProfile.SAT || '';
         document.getElementById('cefr').textContent = userProfile.CEFR || '';
 
+
         const userImage = document.getElementById('userImage');
-        userImage.src = userProfile.url || 'https://via.placeholder.com/200'; 
-        userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'Student'}`;
+        userImage.src = userProfile.url || 'https://via.placeholder.com/200'; // URL รูปภาพ หากไม่มีให้ใช้ placeholder
+        userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'นักเรียน'}`;
     } else {
         // หากไม่มีข้อมูลผู้ใช้ ให้เปลี่ยนหน้าไปยังหน้า login
         window.location.href = '/student';
