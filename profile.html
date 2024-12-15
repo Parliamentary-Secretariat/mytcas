@@ -314,6 +314,11 @@
                 }
             });
         }
+        document.querySelectorAll('.t-collapse h3').forEach(h3 => {
+            h3.addEventListener('click', () => {
+                h3.classList.toggle('active'); // สลับ .active เมื่อคลิกที่ <h3>
+            });
+        });
 
 
         </script>
