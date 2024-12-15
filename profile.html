@@ -314,11 +314,17 @@
                 }
             });
         }
-        document.querySelectorAll('.t-collapse h3').forEach(h3 => {
-            h3.addEventListener('click', () => {
-                h3.classList.toggle('active'); // สลับ .active เมื่อคลิกที่ <h3>
+        
+            // Handle <h3> in .t-collapse
+            document.querySelectorAll('.t-collapse h3').forEach(h3 => {
+                h3.addEventListener('click', () => {
+                    const tCollapse = h3.closest('.t-collapse'); // ค้นหา .t-collapse ที่เป็น parent ของ <h3>
+                    
+                    // สลับคลาส .active บน <h3> และ .t-collapse
+                    h3.classList.toggle('active');
+                    tCollapse.classList.toggle('active'); // เพิ่มหรือลบ .active ใน .t-collapse
+                });
             });
-        });
 
 
         </script>
