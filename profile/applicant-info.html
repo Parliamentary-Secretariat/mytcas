@@ -104,7 +104,7 @@
                           <table>
                               <tr>
                                   <td class="align-middle" width="132">
-                                      <img alt="profile" id="userImage" src="" width="120" class="img-rounded">
+                                      <img id="userImage" src="" width="120" class="img-rounded">
                                   </td>
                                   <td class="align-middle _heading">
                                       <b>รูปถ่ายติดบัตรประจำตัวผู้เข้าสอบรายวิชา</b>
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // แสดงรูปภาพผู้ใช้
         const userImage = document.getElementById('userImage');
         userImage.src = userProfile.url || 'https://via.placeholder.com/200'; // URL รูปภาพ หากไม่มีให้ใช้ placeholder
-        userImage.alt = `รูปภาพโปรไฟล์ของ ${name}`;
+        userImage.alt = `profile`;
     } else {
         // หากไม่มีข้อมูลผู้ใช้ ให้เปลี่ยนหน้าไปยังหน้า login
         window.location.href = '/student';
