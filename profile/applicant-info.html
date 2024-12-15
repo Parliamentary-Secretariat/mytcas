@@ -134,7 +134,7 @@
                               <tbody>
                                   <tr><th>ชื่อ</th><td><span id="nameTh"></span></td></tr>
                                   <tr><th>ชื่อภาษาอังกฤษ</th><td><span id="nameEn"></span></td></tr>
-                                  <tr><th>เลขประจำตัว</th><td><span id="id"></span></td></tr>
+                                  <tr><th>เลขประจำตัว</th><td><span id="idx"></span></td></tr>
                                   <tr><th>รหัสนักเรียน</th><td><span id="schoolId"></span></td></tr>
                                   <!-- <tr><th>อีเมล</th><td></td></tr> -->
                                   <!-- <i class="i-yes"></i> -->
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = userProfile.name_th || userProfile.name_en; // ใช้ชื่อไทยหรือต่างประเทศ
 
         // แสดงข้อมูลในหน้า applicant-info
-        document.getElementById('id').textContent = userProfile.id || '';
+        document.getElementById('idx').textContent = userProfile.id || '';
         document.getElementById('nameTh').textContent = userProfile.name_th || '';
         document.getElementById('nameEn').textContent = userProfile.name_en || '';
         document.getElementById('nameSc').textContent = userProfile.name_sc || '';
