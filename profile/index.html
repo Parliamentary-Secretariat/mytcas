@@ -101,15 +101,15 @@
                     <tbody>
                       <tr>
                         <td class="align-middle" width="140">
-                          <img id="profile-img" src="default-image.png" alt="Student">
+                          <img id="userImage" src="https://via.placeholder.com/200" alt="Student">
                         </td>
                         <td class="align-middle _heading">
                           <ul class="list-none m-0">
-                            <li>ชื่อ <b id="name"></b></li>
-                            <li>โรงเรียน <b id="school"></b></li>
-                            <li>จังหวัด <b id="province"></b></li>
+                            <li>ชื่อ <b><span id="name"></span></b></li>
+                            <li>โรงเรียน <b><span id="nameSc"></span></b></li>
+                            <li>จังหวัด <b><span id="province"></span></b></li>
                             <li>หลักสูตร <b>หลักสูตรแกนกลาง (สามัญ)</b></li>
-                            <li>ปีการศึกษา <b id="sc-year"></b></li>
+                            <li>ปีการศึกษา <b><span id="schoolYear"></span></b></li>
                           </ul>
                         </td>
                       </tr>
@@ -327,71 +327,44 @@
             });
             document.addEventListener('DOMContentLoaded', () => {
     // ดึงข้อมูลจาก localStorage
-//     const userProfile = JSON.parse(localStorage.getItem('userProfile'));
-    
-//     if (userProfile) {
-//         // แสดงข้อมูลในหน้า
-//         document.getElementById('name').textContent = userProfile.name || '';
-//         document.getElementById('nameTh').textContent = userProfile.name_th || '';
-//         document.getElementById('nameEn').textContent = userProfile.name_en || '';
-//         document.getElementById('nameSc').textContent = userProfile.name_sc || '';
-//         document.getElementById('province').textContent = userProfile.prov || '';
-//         document.getElementById('schoolYear').textContent = userProfile.sc_year || '';
-//         document.getElementById('gpax5').textContent = userProfile.GPAX_5 || '';
-//         document.getElementById('schoolId').textContent = userProfile.sc_id || '';
-//         document.getElementById('registrationDate').textContent = userProfile.date || '';
-
-//         // คะแนน TGAT
-//         document.getElementById('tgat').textContent = userProfile.tgat || '';
-//         document.getElementById('tgat1').textContent = userProfile.tgat1 || '';
-//         document.getElementById('tgat2').textContent = userProfile.tgat2 || '';
-//         document.getElementById('tgat3').textContent = userProfile.tgat3 || '';
-
-//         // คะแนน A-Level
-//         document.getElementById('aleve61').textContent = userProfile.aleve61 || '';
-//         document.getElementById('aleve62').textContent = userProfile.aleve62 || '';
-//         document.getElementById('aleve63').textContent = userProfile.aleve63 || '';
-//         // คุณสามารถเพิ่ม aleve64 - aleve89 ที่เหลือตามต้องการ
-
-//         // คะแนนภาษา
-//         document.getElementById('toefl').textContent = userProfile.TOEFL || '';
-//         document.getElementById('ielts').textContent = userProfile.IELTS || '';
-//         document.getElementById('cefr').textContent = userProfile.CEFR || '';
-
-//         // แสดงรูปภาพผู้ใช้
-//         const userImage = document.getElementById('userImage');
-//         userImage.src = userProfile.url || 'https://via.placeholder.com/200'; // URL รูปภาพ หากไม่มีให้ใช้ placeholder
-//         userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'Student'}`;
-//     } else {
-//         // หากไม่มีข้อมูลผู้ใช้ ให้เปลี่ยนหน้าไปยังหน้า login
-//         window.location.href = '/student';
-//     }
-// });
-document.addEventListener('DOMContentLoaded', () => {
     const userProfile = JSON.parse(localStorage.getItem('userProfile'));
-
+    
     if (userProfile) {
-        // ใส่ข้อมูลลงในหน้า
-        document.querySelector('#name').textContent = userProfile.name || '-';
-        document.querySelector('#name-th').textContent = userProfile.name_th || '-';
-        document.querySelector('#name-en').textContent = userProfile.name_en || '-';
-        document.querySelector('#school').textContent = userProfile.name_sc || '-';
-        document.querySelector('#province').textContent = userProfile.prov || '-';
-        document.querySelector('#sc-year').textContent = userProfile.sc_year || '-';
-        document.querySelector('#gpax').textContent = userProfile.GPAX_5 || '-';
-        
-        // ใส่ URL รูปโปรไฟล์
-        const profileImg = document.querySelector('#profile-img');
-        if (userProfile.url) {
-            profileImg.src = userProfile.url;
-            profileImg.alt = `รูปโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en}`;
-        } else {
-            profileImg.src = 'default-image.png'; // ใช้ภาพเริ่มต้น
-            profileImg.alt = 'ไม่มีรูปโปรไฟล์';
-        }
+        // แสดงข้อมูลในหน้า
+        document.getElementById('name').textContent = userProfile.name || '';
+        document.getElementById('nameTh').textContent = userProfile.name_th || '';
+        document.getElementById('nameEn').textContent = userProfile.name_en || '';
+        document.getElementById('nameSc').textContent = userProfile.name_sc || '';
+        document.getElementById('province').textContent = userProfile.prov || '';
+        document.getElementById('schoolYear').textContent = userProfile.sc_year || '';
+        document.getElementById('gpax5').textContent = userProfile.GPAX_5 || '';
+        document.getElementById('schoolId').textContent = userProfile.sc_id || '';
+        document.getElementById('registrationDate').textContent = userProfile.date || '';
+
+        // คะแนน TGAT
+        document.getElementById('tgat').textContent = userProfile.tgat || '';
+        document.getElementById('tgat1').textContent = userProfile.tgat1 || '';
+        document.getElementById('tgat2').textContent = userProfile.tgat2 || '';
+        document.getElementById('tgat3').textContent = userProfile.tgat3 || '';
+
+        // คะแนน A-Level
+        document.getElementById('aleve61').textContent = userProfile.aleve61 || '';
+        document.getElementById('aleve62').textContent = userProfile.aleve62 || '';
+        document.getElementById('aleve63').textContent = userProfile.aleve63 || '';
+        // คุณสามารถเพิ่ม aleve64 - aleve89 ที่เหลือตามต้องการ
+
+        // คะแนนภาษา
+        document.getElementById('toefl').textContent = userProfile.TOEFL || '';
+        document.getElementById('ielts').textContent = userProfile.IELTS || '';
+        document.getElementById('cefr').textContent = userProfile.CEFR || '';
+
+        // แสดงรูปภาพผู้ใช้
+        const userImage = document.getElementById('userImage');
+        userImage.src = userProfile.url || 'https://via.placeholder.com/200'; // URL รูปภาพ หากไม่มีให้ใช้ placeholder
+        userImage.alt = `รูปภาพโปรไฟล์ของ ${userProfile.name_th || userProfile.name_en || 'Student'}`;
     } else {
-        // หากไม่มีข้อมูล
-        console.error('User profile not found in localStorage.');
+        // หากไม่มีข้อมูลผู้ใช้ ให้เปลี่ยนหน้าไปยังหน้า login
+        window.location.href = '/student';
     }
 });
 
