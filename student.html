@@ -152,6 +152,41 @@ button.addEventListener('click', (event) => {
         `;
     }
 });
+// เลือกปุ่ม "เข้าสู่ระบบด้วยรหัสผ่าน"
+const loginWithPasswordLink = document.querySelector('._heading.cursor-pointer');
+
+// เลือกตำแหน่งสำหรับเพิ่มเนื้อหา
+const tRow = document.querySelector('.t-row');
+const parentForm = tRow.parentNode;
+
+// ฟังก์ชันเมื่อกด "เข้าสู่ระบบด้วยรหัสผ่าน"
+loginWithPasswordLink.addEventListener('click', (event) => {
+    event.preventDefault(); // ป้องกันการกระทำเริ่มต้น
+
+    // ตรวจสอบว่าช่องกรอกรหัสผ่านและเนื้อหายังไม่มีการเพิ่มซ้ำ
+    if (!document.querySelector('input[type="password"]')) {
+        // เพิ่มฟิลด์รหัสผ่านใน .t-row > .col.required
+        const passwordFieldHTML = `
+            <div class="col required">
+                <label>รหัสผ่าน</label>
+                <input type="password" placeholder="กรอกรหัสผ่าน" value="">
+                <i class="i-viewpass cursor-pointer"></i>
+            </div>
+        `;
+        tRow.insertAdjacentHTML('beforeend', passwordFieldHTML);
+
+        // เพิ่มปุ่มเข้าสู่ระบบและลิงก์ลืมรหัสผ่านด้านล่าง .t-row
+        const actionHTML = `
+            <div class="action">
+                <p><a class="btn-main cursor-pointer">เข้าสู่ระบบ</a></p>
+            </div>
+            <div class="text-center _heading">
+                <a href="/registered/forgot-password">ลืมรหัสผ่าน?</a>
+            </div>
+        `;
+        parentForm.insertAdjacentHTML('beforeend', actionHTML);
+    }
+});
 
     // // ตัวอย่างข้อมูล student68.json
     // const students = [
