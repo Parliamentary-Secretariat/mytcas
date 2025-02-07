@@ -14,6 +14,16 @@
         <link rel="stylesheet" href="https://student.mytcas.com/assets/css/mobile.css?v11">
         <link rel="stylesheet" href="https://student.mytcas.com/assets/css/desktop.css?v11" media="(min-width:1024px)">
         <link rel="stylesheet" href="/mytcas/stylesheet.css">
+        <script>
+            document.querySelectorAll('.r-choose input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    document.querySelectorAll('.r-choose li').forEach(li => li.classList.remove('active'));
+                    if (this.checked) {
+                        this.closest('li').classList.add('active');
+                    }
+                });
+            });
+        </script>
         <style>
             #fb-root {
                 width: 0
