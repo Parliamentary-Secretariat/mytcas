@@ -14,16 +14,29 @@
         <link rel="stylesheet" href="https://student.mytcas.com/assets/css/mobile.css?v11">
         <link rel="stylesheet" href="https://student.mytcas.com/assets/css/desktop.css?v11" media="(min-width:1024px)">
         <link rel="stylesheet" href="/mytcas/stylesheet.css">
-        <script>
-            document.querySelectorAll('.r-choose input[type="radio"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    document.querySelectorAll('.r-choose li').forEach(li => li.classList.remove('active'));
-                    if (this.checked) {
-                        this.closest('li').classList.add('active');
-                    }
-                });
-            });
-        </script>
+<script>
+    document.querySelectorAll('.r-choose input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            // ลบ class active ออกจาก li ทั้งหมด
+            document.querySelectorAll('.r-choose li').forEach(li => li.classList.remove('active'));
+
+            // เพิ่ม class active ให้ li ของ input ที่ถูกเลือก
+            if (this.checked) {
+                this.closest('li').classList.add('active');
+            }
+
+            // ตรวจสอบว่ามีการเลือกหรือไม่ ถ้าเลือกแล้วให้ปุ่มกดได้
+            const btn = document.querySelector('.btn-icon');
+            if (document.querySelector('.r-choose input[type="radio"]:checked')) {
+                btn.classList.add('active');
+                btn.style.cursor = "pointer";
+            } else {
+                btn.classList.remove('active');
+                btn.style.cursor = "not-allowed";
+            }
+        });
+    });
+</script>
         <style>
             #fb-root {
                 width: 0
